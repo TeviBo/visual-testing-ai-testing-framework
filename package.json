@@ -1,0 +1,18 @@
+{
+  "name": "pw-ts-visual-testing-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.3.3",
+    "typescript": "^5.5.3"
+  },
+  "private": true,
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1"
+  }
+}
