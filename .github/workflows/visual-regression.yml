@@ -1,0 +1,46 @@
+name: Playwright AI Visual Regression Tests
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-jammy
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Playwright tests
+        run: npx playwright test
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_AGENT_VERSION: ${{ secrets.GEMINI_AGENT_VERSION }}
+          TEST_ENV: ${{ secrets.TEST_ENV }}
+
+      - name: Download historic (Branch gh-pages)
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: old-pages
+
+      - name: Build Allure report
+        if: always()
+        run: |
+          mkdir -p reports/allure-results/history
+          cp -R old-pages/history/* reports/allure-results/history/ || echo "No hay historial previo"
+          npx allure generate reports/allure-results --clean -o reports/allure-report
+
+      - name: Upload Allure report artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: reports/allure-report
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
