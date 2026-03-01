@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "playwright test --grep @regression",
+    "test": "playwright test",
     "report": "allure serve ./reports/allure-results",
     "heal": "ts-node scripts/auto-heal.ts"
   },
