@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Playwright AI Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; background: #f4f4f9; }
+        nav { background: #2c3e50; padding: 15px; color: white; display: flex; gap: 20px; }
+        .hero { margin-top: 50px; text-align: center; }
+        .btn-pizza { background: #e74c3c; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        .footer { margin-top: 100px; color: #7f8c8d; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+<nav>
+    <span>Home</span>
+    <span>Products</span>
+    <span>Contact</span>
+</nav>
+<div class="hero">
+    <h1>Welcome to our App</h1>
+    <button class="btn-pizza">Get Pizza</button>
+</div>
+<div class="footer">
+    Today is: <span id="current-date"></span>
+</div>
+<script>
+    // Localized date for English (US)
+    document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US');
+</script>
+</body>
+</html>
