@@ -36,6 +36,7 @@ jobs:
 
       - name: Setup Java
         uses: actions/setup-java@v4
+        if: always()
         with:
           distribution: 'temurin'
           java-version: '17'
