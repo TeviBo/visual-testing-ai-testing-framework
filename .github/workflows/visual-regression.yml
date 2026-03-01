@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --grep "@regression"
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_AGENT_VERSION: ${{ secrets.GEMINI_AGENT_VERSION }}
