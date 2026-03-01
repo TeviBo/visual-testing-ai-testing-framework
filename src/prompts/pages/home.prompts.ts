@@ -20,3 +20,14 @@ export const homePromptsConflict: PagePrompt = {
     dynamicContext: (mode: string) =>
         `The application is currently running in: ${mode}.`
 };
+
+export const footerPrompts: PagePrompt = {
+    name: "Footer Component",
+    rules: [
+        "It must display the text 'Today is:' followed by a valid date.",
+        "The text color should be light blue.",
+        "The background must match the page background (no distinct box)."
+    ],
+    dynamicContext: (expectedDate: string) =>
+        `The exact date displayed must be: ${expectedDate}`
+};

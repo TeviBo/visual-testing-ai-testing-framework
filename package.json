@@ -4,11 +4,15 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "playwright test",
+    "heal": "ts-node scripts/auto-heal.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.3.3",
+    "serve": "^14.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
   },
   "private": true,

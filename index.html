@@ -12,20 +12,19 @@
     </style>
 </head>
 <body>
-<nav>
+<nav data-testid="nav">
     <span>Home</span>
     <span>Products</span>
     <span>Contact</span>
 </nav>
 <div class="hero">
     <h1>Welcome to our App</h1>
-    <button class="btn-pizza">Get Pizza</button>
+    <button class="btn-pizza" data-testid="btn-get-pizza">Get Pizza</button>
 </div>
-<div class="footer">
-    Today is: <span id="current-date"></span>
+<div class="footer" data-testid="footer">
+    Today is: <span id="current-date" data-testid="dt-current-date"></span>
 </div>
 <script>
-    // Localized date for English (US)
     document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US');
 </script>
 </body>

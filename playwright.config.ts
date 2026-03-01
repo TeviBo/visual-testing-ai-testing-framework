@@ -1,4 +1,4 @@
-import {defineConfig, devices} from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 import 'dotenv/config';
 import './tests/setup/matchers';
 import './src/fixtures/baseTest';
@@ -14,14 +14,17 @@ export default defineConfig({
     use: {
         trace: 'on-first-retry',
         headless: true,
-        baseURL: process.env.BASE_URL || "http://127.0.0.1:5500/index.html"
+        baseURL: process.env.BASE_URL || "http://127.0.0.1:5500"
     },
-
-
     projects: [
         {
             name: 'chromium',
-            use: {...devices['Desktop Chrome']},
+            use: { ...devices['Desktop Chrome'] },
         },
     ],
+    webServer: {
+        command: 'npx serve -p 5500 .',
+        url: 'http://127.0.0.1:5500',
+        reuseExistingServer: !process.env.CI,
+    },
 });

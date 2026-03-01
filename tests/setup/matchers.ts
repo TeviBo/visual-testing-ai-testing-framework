@@ -1,11 +1,11 @@
 import {expect, Locator, Page} from '@playwright/test';
-import {PROMPT_SCHEMA} from "../../src/schemas/aiSchema";
+import {PROMPT_RESPONSE_SCHEMA} from "../../src/schemas/aiSchema";
 import {PromptBuilder} from "../../src/utils/promptBuilder";
 import {getAIResponse} from "../../src/utils/aiClient";
 
 expect.extend({
     async toBeVisualValid(received: Page | Locator, builder: PromptBuilder) {
-        const prompt = builder.build(JSON.stringify(PROMPT_SCHEMA));
+        const prompt = builder.build(JSON.stringify(PROMPT_RESPONSE_SCHEMA));
         const screenshot = await received.screenshot();
         const analysis = await getAIResponse(prompt, screenshot);
         const isSuccess = analysis.status === "Success";
