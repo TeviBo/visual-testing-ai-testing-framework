@@ -20,5 +20,8 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 
-# Files
+# Environment Files
 .env
+
+# Tests Reporting
+reports/

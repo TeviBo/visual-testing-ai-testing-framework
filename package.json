@@ -6,11 +6,15 @@
   "scripts": {
     "build": "tsc",
     "test": "playwright test",
+    "prereport": "node -e \"require('fs').copyFileSync('./config/allure/categories.json', './reports/allure-results/categories.json')\"",
+    "report": "allure serve ./reports/allure-results",
     "heal": "ts-node scripts/auto-heal.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.3.3",
+    "allure-commandline": "^2.37.0",
+    "allure-playwright": "^3.5.0",
     "serve": "^14.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"

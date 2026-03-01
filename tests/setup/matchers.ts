@@ -1,4 +1,4 @@
-import {expect, Locator, Page} from '@playwright/test';
+import {expect, Locator, Page, test} from '@playwright/test';
 import {PROMPT_RESPONSE_SCHEMA} from "../../src/schemas/aiSchema";
 import {PromptBuilder} from "../../src/utils/promptBuilder";
 import {getAIResponse} from "../../src/utils/aiClient";
@@ -8,6 +8,10 @@ expect.extend({
         const prompt = builder.build(JSON.stringify(PROMPT_RESPONSE_SCHEMA));
         const screenshot = await received.screenshot();
         const analysis = await getAIResponse(prompt, screenshot);
+        await test.info().attach('AI-Decision-Log', {
+            body: JSON.stringify(analysis, null, 2),
+            contentType: 'application/json'
+        });
         const isSuccess = analysis.status === "Success";
         if (isSuccess) {
             return {
