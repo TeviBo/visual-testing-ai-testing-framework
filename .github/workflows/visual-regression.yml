@@ -30,6 +30,12 @@ jobs:
           ref: gh-pages
           path: old-pages
 
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Build Allure report
         if: always()
         run: |
