@@ -25,7 +25,7 @@ export const footerPrompts: PagePrompt = {
     name: "Footer Component",
     rules: [
         "It must display the text 'Today is:' followed by a valid date.",
-        "The text color should be light blue.",
+        "The text color should be light gray.",
         "The background must match the page background (no distinct box)."
     ],
     dynamicContext: (expectedDate: string) =>

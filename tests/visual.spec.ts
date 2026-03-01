@@ -13,9 +13,8 @@ test.describe("AI visual regression", () => {
         await allure.story("Complete Structural Validation");
         await page.goto("index.html");
         const builder = createBuilder(homePrompts);
-        await allure.step("Validar la UI con IA", async () => {
-            await expect(page).toBeVisualValid(builder);
-        });
+        await expect(page).toBeVisualValid(builder);
+
     });
 
     test('Footer component isolated validation with dynamic context', {tag: ['@regression', '@component'],}, async ({ page, createBuilder }) => {
@@ -27,8 +26,7 @@ test.describe("AI visual regression", () => {
         const todayDate = new Date().toLocaleDateString('en-US');
         const builder = createBuilder(footerPrompts).withDynamicContext(todayDate);
         const footerLocator = page.locator('.footer');
-        await allure.step("Validar el componente Footer con contexto dinámico", async () => {
-            await expect(footerLocator).toBeVisualValid(builder);
-        });
+        await expect(footerLocator).toBeVisualValid(builder);
+
     });
 });

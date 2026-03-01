@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "playwright test",
-    "prereport": "node -e \"require('fs').copyFileSync('./config/allure/categories.json', './reports/allure-results/categories.json')\"",
+    "test": "playwright test --grep @regression",
     "report": "allure serve ./reports/allure-results",
     "heal": "ts-node scripts/auto-heal.ts"
   },
